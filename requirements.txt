@@ -1,5 +1,5 @@
-flask==2.0.1
-pillow==8.3.1
-numpy==1.21.1
-werkzeug==2.0.1
-matplotlib==3.4.3
+flask
+pillow
+numpy
+werkzeug
+matplotlib
