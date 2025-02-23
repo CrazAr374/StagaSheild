@@ -3,3 +3,4 @@ pillow
 numpy
 werkzeug
 matplotlib
+gunicorn
