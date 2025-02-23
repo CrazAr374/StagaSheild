@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StegaShield Dashboard</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="app-body">
+    <!-- App Header -->
+    <header class="app-header">
+        <nav class="app-nav">
+            <div class="brand">
+                <a href="{{ url_for('landing') }}" class="logo">
+                    <img src="{{ url_for('static', filename='logo.png') }}" alt="StegaShield Logo">
+                    <span>StegaShield</span>
+                </a>
+            </div>
+            <div class="app-nav-links">
+                <a href="{{ url_for('landing') }}" class="nav-link">
+                    <i class="fas fa-home"></i> Home
+                </a>
+                <a href="{{ url_for('landing') }}#features" class="nav-link">
+                    <i class="fas fa-star"></i> Features
+                </a>
+                <a href="https://github.com/CrazAr374" target="_blank" class="nav-link">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="mailto:atharva.rahate374@gmail.com" class="nav-link">
+                    <i class="fas fa-envelope"></i> Contact
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Processing Overlay -->
+    <div class="processing-overlay">
+        <div class="loading-animation">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Processing...</div>
+            <div class="wave-loading">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="app-main">
+        <div class="dashboard-header">
+            <h1>StegaShield Dashboard</h1>
+            <p class="dashboard-subtitle">Secure Message Concealment Platform</p>
+        </div>
+
+        <div class="app-container">
+            <!-- Action Tabs -->
+            <div class="tabs">
+                <button class="tab-btn active" onclick="showTab('embed')">
+                    <i class="fas fa-lock"></i> Embed Message
+                </button>
+                <button class="tab-btn" onclick="showTab('extract')">
+                    <i class="fas fa-unlock"></i> Extract Message
+                </button>
+                <button class="tab-btn" onclick="showTab('batch')">
+                    <i class="fas fa-layer-group"></i> Batch Process
+                </button>
+                <button class="tab-btn" onclick="showTab('detect')">
+                    <i class="fas fa-search"></i> Analyze Image
+                </button>
+                <button class="tab-btn" onclick="showTab('dashboard')">
+                    <i class="fas fa-chart-line"></i> History
+                </button>
+            </div>
+
+            <!-- Embed Section -->
+            <div id="embed" class="tab-content active">
+                <h2>Embed Secret Message</h2>
+                <form id="embedForm">
+                    <div class="preview-container">
+                        <div class="input-group">
+                            <label for="embedImage">Select Image:</label>
+                            <input type="file" id="embedImage" accept="image/png,image/jpeg" required>
+                        </div>
+                        <div class="preview-box">
+                            <img id="embedPreview" alt="Preview" class="preview-image">
+                            <div class="preview-overlay">
+                                <div class="progress-bar">
+                                    <div class="progress"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="secretMessage">Secret Message:</label>
+                        <textarea id="secretMessage" required></textarea>
+                        <div class="message-info">
+                            <span class="message-length">Length: 0 characters</span>
+                            <span class="max-length"></span>
+                        </div>
+                    </div>
+                    <button type="submit">Embed Message</button>
+                </form>
+            </div>
+
+            <!-- Extract Section -->
+            <div id="extract" class="tab-content">
+                <h2>Extract Secret Message</h2>
+                <form id="extractForm">
+                    <div class="input-group">
+                        <label for="extractImage">Select Image:</label>
+                        <input type="file" id="extractImage" accept="image/png,image/jpeg" required>
+                    </div>
+                    <button type="submit">Extract Message</button>
+                </form>
+                <div class="message-container">
+                    <label>Extracted Message:</label>
+                    <div id="extractedMessage" class="message-box" role="textbox" aria-label="Extracted message content"></div>
+                </div>
+            </div>
+
+            <!-- Dashboard Section -->
+            <div id="dashboard" class="tab-content">
+                <h2>Processing History</h2>
+                <div class="dashboard-container">
+                    <!-- Dashboard items will be added here dynamically -->
+                </div>
+            </div>
+
+            <!-- Batch Processing Section -->
+            <div id="batch" class="tab-content">
+                <h2>Batch Processing</h2>
+                <form id="batchForm">
+                    <div class="input-group">
+                        <label for="batchMode">Mode:</label>
+                        <select id="batchMode">
+                            <option value="embed">Embed Message</option>
+                            <option value="extract">Extract Messages</option>
+                        </select>
+                    </div>
+                    
+                    <div class="input-group" id="batchMessageGroup">
+                        <label for="batchMessage">Secret Message:</label>
+                        <textarea id="batchMessage"></textarea>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="batchImages">Select Images:</label>
+                        <input type="file" id="batchImages" multiple accept="image/png,image/jpeg,image/bmp,image/tiff,image/gif">
+                    </div>
+                    
+                    <div class="batch-preview">
+                        <h3>Selected Files:</h3>
+                        <div id="fileList"></div>
+                    </div>
+                    
+                    <button type="submit">Process Files</button>
+                </form>
+                
+                <div id="batchResults" class="results-container"></div>
+            </div>
+
+            <!-- Image Analysis Section -->
+            <div id="detect" class="tab-content">
+                <h2>Image Analysis</h2>
+                <div class="analysis-container">
+                    <form id="detectForm">
+                        <div class="input-group">
+                            <label for="detectImage">Select Image to Analyze:</label>
+                            <input type="file" id="detectImage" accept="image/png,image/jpeg,image/bmp" required>
+                        </div>
+                        <button type="submit">Analyze Image</button>
+                    </form>
+
+                    <div id="analysisResults" class="analysis-results">
+                        <div class="analysis-grid">
+                            <div class="analysis-card probability-card">
+                                <h3>Steganography Probability</h3>
+                                <div class="meter-container">
+                                    <div class="meter" id="probabilityMeter"></div>
+                                    <span id="probabilityValue">0%</span>
+                                </div>
+                            </div>
+
+                            <div class="analysis-card">
+                                <h3>LSB Modification Map</h3>
+                                <div class="visualization-box">
+                                    <img id="modificationMap" alt="Modification Map">
+                                </div>
+                            </div>
+
+                            <div class="analysis-card">
+                                <h3>Color Distribution</h3>
+                                <div class="visualization-box">
+                                    <img id="histogram" alt="Color Histogram">
+                                </div>
+                            </div>
+
+                            <div class="analysis-card details-card">
+                                <h3>Analysis Details</h3>
+                                <div id="analysisDetails" class="details-list"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- App Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>StegaShield</h3>
+                <p>Advanced image steganography platform for secure message concealment.</p>
+                <div class="social-links">
+                    <a href="https://x.com/atharva_rahate" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/in/atharva-rahate-272390269/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/CrazAr374" target="_blank"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#team">Team</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#">Documentation</a></li>
+                    <li><a href="#">API Reference</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> atharva.rahate374@gmail.com</li>
+                    <li><i class="fas fa-phone"></i>+91 8149812710</li>
+                    <li><i class="fas fa-map-marker-alt"></i>Nashik, India</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; StegaShield. All rights reserved.</p>
+            <div class="legal-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+        // Initial setup to ensure content is visible
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('mainSpinner').style.display = 'none';
+            document.querySelector('.container').style.display = 'block';
+            showTab('embed'); // Ensure first tab is visible
+        });
+    </script>
+</body>
+</html>

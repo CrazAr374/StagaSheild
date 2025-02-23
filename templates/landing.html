@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StegaShield - Advanced Image Steganography Platform</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='landing.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="StegaShield Logo">
+                <span>StegaShield</span>
+            </div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#about">About</a>
+                <a href="#team">Team</a>
+                <a href="{{ url_for('stego_app') }}" class="cta-button">Launch App</a>
+            </div>
+            <button class="mobile-menu" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Secure Your Messages with Advanced Image Steganography</h1>
+            <p>StegaShield provides military-grade message concealment within images using cutting-edge steganography techniques.</p>
+            <div class="cta-group">
+                <a href="{{ url_for('stego_app') }}" class="primary-cta">Get Started</a>
+                <a href="#demo" class="secondary-cta">Watch Demo</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="{{ url_for('static', filename='hero-img.png') }}" 
+                 alt="Steganography Illustration"
+                 loading="eager"
+                 decoding="async">
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features reveal">
+        <h2>Why Choose StegaShield?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Military-Grade Security</h3>
+                <p>Advanced LSB algorithms ensure your messages remain completely undetectable.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-tachometer-alt"></i>
+                <h3>Real-time Analysis</h3>
+                <p>Instant steganalysis and detection capabilities for enhanced security.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-layer-group"></i>
+                <h3>Batch Processing</h3>
+                <p>Process multiple images simultaneously for efficient operations.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>Advanced Analytics</h3>
+                <p>Detailed analysis reports and visualization of steganographic data.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works reveal">
+        <h2>How It Works</h2>
+        <div class="steps-container">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Upload Image</h3>
+                <p>Select any image file in common formats (PNG, JPG, BMP)</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Enter Message</h3>
+                <p>Type your secret message or upload a text file</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Process</h3>
+                <p>Our algorithm embeds the message securely in the image</p>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3>Download</h3>
+                <p>Get your steganographic image with hidden message</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="about-content">
+            <h2>About Steganography</h2>
+            <p>Steganography is the art and science of hiding information within other data. Unlike encryption, which makes data unreadable, steganography conceals the very existence of the message. Our platform uses advanced Least Significant Bit (LSB) modification techniques to embed messages within image pixels, making them undetectable to the naked eye.</p>
+            <div class="stats-container">
+                <div class="stat">
+                    <span class="stat-number" data-target="99.98">99.98%</span>
+                    <span class="stat-label">Undetectable</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" data-target="5000">5,000+</span>
+                    <span class="stat-label">Messages Hidden</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" data-target="1000">1,000+</span>
+                    <span class="stat-label">Users</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team reveal">
+        <h2>Meet the Developer</h2>
+        <div class="team-container">
+            <div class="team-member">
+                <div class="member-image">
+                    <img src="{{ url_for('static', filename='team/member1.jpg') }}" alt="Developer Profile">
+                </div>
+                <div class="member-info">
+                    <h3>Aadvik Coder</h3>
+                    <p class="role">Full Stack Developer & Security Researcher</p>
+                    <p class="bio">Passionate about cybersecurity and steganography. Specialized in developing secure communication solutions and data privacy tools.</p>
+                    <div class="skills">
+                        <span>Python</span>
+                        <span>Flask</span>
+                        <span>Cryptography</span>
+                        <span>Image Processing</span>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://github.com/CrazAr374" target="_blank" class="github">
+                            <i class="fab fa-github"></i>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/atharva-rahate-272390269/" target="_blank" class="linkedin">
+                            <i class="fab fa-linkedin"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://x.com/atharva_rahate" target="_blank" class="twitter">
+                            <i class="fab fa-twitter"></i>
+                            <span>Twitter</span>
+                        </a>
+                        <a href="mailto:atharva.rahate374@gmail.com" class="email">
+                            <i class="fas fa-envelope"></i>
+                            <span>Email</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>StegaShield</h3>
+                <p>Advanced image steganography platform for secure message concealment.</p>
+                <div class="social-links">
+                    <a href="https://x.com/atharva_rahate" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/in/atharva-rahate-272390269/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/CrazAr374" target="_blank"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#team">Team</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#">Documentation</a></li>
+                    <li><a href="#">API Reference</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul>
+                    <li><i class="fas fa-envelope"></i>atharva.rahate374@gmail.com</li>
+                    <li><i class="fas fa-phone"></i>8149812710</li>
+                    <li><i class="fas fa-map-marker-alt"></i>Nashik, India</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; StegaShield. All rights reserved.</p>
+            <div class="legal-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='landing.js') }}"></script>
+</body>
+</html>
