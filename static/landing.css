@@ -350,28 +350,54 @@ body {
 /* How It Works Section */
 .how-it-works {
     padding: 6rem 2rem;
+    background: linear-gradient(to bottom, var(--light) 0%, white 100%);
+}
+
+.how-it-works h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--primary-dark);
+    width: 100%;
+}
+
+.process-intro {
+    max-width: 800px;
+    margin: 0 auto 4rem;
+    text-align: center;
+    color: var(--gray);
+    font-size: 1.1rem;
+    line-height: 1.6;
 }
 
 .steps-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 0 auto 4rem;
 }
 
 .step {
-    text-align: center;
+    background: white;
     padding: 2rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    transition: all var(--transition-normal);
     position: relative;
-    transition: transform 0.3s ease;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .step:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
 }
 
 .step-number {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
     width: 40px;
     height: 40px;
     background: var(--primary);
@@ -380,15 +406,117 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 1rem;
     font-weight: bold;
-    transition: transform 0.5s var(--bounce), background-color 0.3s ease;
+    font-size: 1.2rem;
 }
 
-.step:hover .step-number {
-    transform: scale(1.2);
-    background: var(--primary-dark);
-    animation: pulse 1s infinite;
+.step-icon {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    transition: transform var(--transition-normal);
+}
+
+.step:hover .step-icon {
+    transform: scale(1.1);
+}
+
+.step h3 {
+    color: var(--primary-dark);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.step p {
+    color: var(--gray);
+    margin-bottom: 1rem;
+}
+
+.step-details {
+    list-style: none;
+    margin: 1rem 0;
+}
+
+.step-details li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--dark);
+}
+
+.step-details i {
+    color: var(--secondary);
+    font-size: 0.9rem;
+}
+
+.step-note {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    padding: 0.75rem;
+    background: rgba(99, 102, 241, 0.1);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: var(--primary-dark);
+}
+
+.step-note i {
+    color: var(--primary);
+}
+
+.process-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.feature {
+    padding: 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    transition: all var(--transition-normal);
+}
+
+.feature:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.feature i {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.feature h4 {
+    color: var(--primary-dark);
+    margin-bottom: 0.5rem;
+}
+
+.feature p {
+    color: var(--gray);
+}
+
+@media (max-width: 768px) {
+    .steps-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .step {
+        padding: 1.5rem;
+    }
+
+    .process-features {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
 }
 
 /* About Section */

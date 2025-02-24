@@ -110,13 +110,21 @@
                 <form id="extractForm">
                     <div class="input-group">
                         <label for="extractImage">Select Image:</label>
-                        <input type="file" id="extractImage" accept="image/png,image/jpeg" required>
+                        <input type="file" id="extractImage" accept="image/png,image/jpeg,image/jpg,image/bmp" required>
                     </div>
                     <button type="submit">Extract Message</button>
                 </form>
                 <div class="message-container">
                     <label>Extracted Message:</label>
                     <div id="extractedMessage" class="message-box" role="textbox" aria-label="Extracted message content"></div>
+                </div>
+                <div class="step-note info">
+                    <i class="fas fa-info-circle"></i>
+                    <span>Supported formats: PNG (recommended), JPG/JPEG, BMP. For best results, use the original stego-image file without any modifications.</span>
+                </div>
+                <div class="step-note warning">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>Note: JPG/JPEG compression may affect message extraction. If possible, use PNG format for more reliable results.</span>
                 </div>
             </div>
 

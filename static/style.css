@@ -1459,3 +1459,12 @@ wave-loading span:nth-child(3) { animation-delay: 0.2s; }
     background-color: var(--primary);
     border-radius: 2px;
 }
+
+.step-note.warning {
+    background: rgba(245, 158, 11, 0.1);
+    border-left: 4px solid var(--warning);
+}
+
+.step-note.warning i {
+    color: var(--warning);
+}
